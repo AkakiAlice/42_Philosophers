@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/11/23 18:42:19 by alida-si         ###   ########.fr       */
+/*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
+/*   Updated: 2022/11/23 18:39:58 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#include "philosophers.h"
 
-#include <pthread.h>
-#include <unistd.h>
-#include <stdio.h>
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-// Colors
-# define RED "\033[38;2;222;56;43m"
-# define RESET "\033[0m"
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-int		check_args(int argc, char **argv);
-void	print_error_msg(char *msg);
-
-#endif
+void	print_error_msg(char *msg)
+{
+	write(2, RED, ft_strlen(RED));
+	write(2, "Error: ", 7);
+	write(2, msg, ft_strlen(msg));
+	write(2, RESET, ft_strlen(RESET));
+}
