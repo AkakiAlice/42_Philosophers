@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 12:07:14 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:21:27 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 
 typedef struct s_data
 {
-	long		start_time;
-	pthread_t	monitoring;
-	int			all_satisfied_flag;
-	int			died_flag;
+	long			start_time;
+	pthread_t		monitoring;
+	int				all_satisfied_flag;
+	int				died_flag;
+	pthread_mutex_t	mutex_eat;
 }			t_data;
 
 typedef struct s_rules
@@ -63,6 +64,16 @@ void		init(int argc, char *argv[], t_node *head);
 
 //linked_list.c
 void		create_linked_list(char *argv[], t_node **head);
+
+//monitoring.c
+void		*monitoring(void *arg);
+
+//simulation.c
+void		*routine(void *arg);
+
+//threads.c
+void		join_philos(t_node *head);
+void		create_philos(t_node *head);
 
 //time.c
 long int	current_time(void);

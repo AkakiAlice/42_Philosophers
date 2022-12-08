@@ -6,7 +6,7 @@
 #    By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 18:11:37 by alida-si          #+#    #+#              #
-#    Updated: 2022/12/08 11:49:40 by alida-si         ###   ########.fr        #
+#    Updated: 2022/12/08 13:16:38 by alida-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ FILES = main.c\
 		utils_linked_list.c\
 		init.c\
 		time.c\
+		threads.c\
+		monitoring.c\
+		simulation.c\
 		check_input.c
 
 # COMPILED_SOURCES #

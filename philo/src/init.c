@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:08:26 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 11:53:52 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:39:28 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_data(t_data *data)
 	data->all_satisfied_flag = 0;
 	data->died_flag = 0;
 	data->start_time = current_time();
+	pthread_mutex_init(&data->mutex_eat, NULL);
 }
 
 void	init_rules(t_rules *rules, int argc, char *argv[])
@@ -48,16 +49,12 @@ void	fill_node_data(t_node *head, t_data *data, t_rules *rules)
 
 void	init(int argc, char *argv[], t_node *head)
 {
-	t_data	data;
-	t_rules	rules;
+	t_data	*data;
+	t_rules	*rules;
 
-	init_rules(&rules, argc, argv);
-	/*printf("nb_philos: %d\n", rules.nb_philos);
-	printf("time to die: %d\n", rules.time_to_die);
-	printf("time to eat: %d\n", rules.time_to_eat);
-	printf("time to sleep: %d\n", rules.time_to_sleep);
-	printf("must eat: %d\n", rules.must_eat);*/
-	init_data(&data);
-	fill_node_data(head, &data, &rules);
-	printf("(%d)\n", head->philo_id);
+	data = (t_data *) malloc(sizeof(t_data));
+	rules = (t_rules *) malloc(sizeof(t_rules));
+	init_rules(rules, argc, argv);
+	init_data(data);
+	fill_node_data(head, data, rules);
 }
