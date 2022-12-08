@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/11/25 13:13:48 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 09:52:21 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,31 @@ void	print_error_msg(char *msg)
 	write(2, "Error: ", 7);
 	write(2, msg, ft_strlen(msg));
 	write(2, RESET, ft_strlen(RESET));
+}
+
+int	ft_atoi(const char *str)
+{
+	int	index;
+	int	result;
+	int	sign;
+
+	index = 0;
+	sign = 1;
+	result = 0;
+	while (str[index] == ' ' || (str[index] >= '\t' && str[index] <= '\r'))
+		index++;
+	if (str[index] == '-' || str[index] == '+')
+	{
+		if (str[index] == '-')
+			sign *= -1;
+		index++;
+	}
+	while (ft_isdigit(str[index]))
+	{
+		result = (str[index] - '0') + (result * 10);
+		index++;
+	}
+	return (result * sign);
 }
 
 long int	ft_atoll(const char *str)

@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:37:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/11/25 13:13:41 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:15:56 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_is_int(char **argv)
 	char	*str;
 	char	*error_msg;
 
-	str = ": all arguments must be integers between zero and INT_MAX\n";
+	str = ": all arguments must be integers between one and INT_MAX\n";
 	error_msg = NULL;
 	i = 1;
 	while (argv[i])

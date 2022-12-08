@@ -6,7 +6,7 @@
 #    By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 18:11:37 by alida-si          #+#    #+#              #
-#    Updated: 2022/11/23 18:40:45 by alida-si         ###   ########.fr        #
+#    Updated: 2022/12/08 10:10:23 by alida-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ VPATH := $(SRC_DIR)
 
 FILES = main.c\
 		utils.c\
+		linked_list.c\
+		utils_linked_list.c\
 		check_input.c
 
 # COMPILED_SOURCES #
