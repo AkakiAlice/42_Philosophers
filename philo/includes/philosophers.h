@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 11:01:12 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:50:30 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,14 @@ typedef struct s_node
 //check_input.c
 int			check_args(int argc, char **argv);
 
+//init.c
+void		init(int argc, char *argv[], t_node *head);
+
 //linked_list.c
 void		create_linked_list(char *argv[], t_node **head);
+
+//time.c
+long int	current_time();
 
 //utils_linked_list.c
 void		free_list(t_node **head);

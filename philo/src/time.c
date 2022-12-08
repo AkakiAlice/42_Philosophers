@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 19:18:43 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 12:04:48 by alida-si         ###   ########.fr       */
+/*   Created: 2022/12/08 11:49:19 by alida-si          #+#    #+#             */
+/*   Updated: 2022/12/08 11:50:02 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char *argv[])
+long int	current_time()
 {
-	t_node	*head;
+	struct	timeval	tv;
 
-	head = NULL;
-	if (!check_args(argc, argv))
-		return (1);
-	create_linked_list(argv, &head);
-	init(argc, argv, head);
-	//print_nodes(head);
-	free_list(&head);
-	return (0);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000000 + tv.tv_usec);
 }
