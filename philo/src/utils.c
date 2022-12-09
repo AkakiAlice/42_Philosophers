@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 09:52:21 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:00:12 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,23 @@ char	*ft_strcat(char *s1, char *s2)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+
+void	print_status(t_node *head, int status)
+{
+	long int	time_diff;
+
+	pthread_mutex_lock(&head->data->mutex_print);
+	time_diff = (current_time() - head->data->start_time) / 1000;
+	if (!head->data->all_satisfied_flag && !head->data->died_flag)
+	{
+		if (status == EAT)
+			printf ("%ld philo %d is eating\n", time_diff, head->philo_id);
+		else if (status == SLEEP)
+			printf("%ld philo %d is sleeping\n", time_diff, head->philo_id);
+		else if (status == THINK)
+			printf("%ld philo %d is thinking\n", time_diff, head->philo_id);
+	}
+	pthread_mutex_unlock(&head->data->mutex_print);
 }

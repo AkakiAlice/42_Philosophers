@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 13:21:27 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:42:35 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_data
 	int				all_satisfied_flag;
 	int				died_flag;
 	pthread_mutex_t	mutex_eat;
+	pthread_mutex_t	mutex_print;
 }			t_data;
 
 typedef struct s_rules
@@ -50,11 +51,17 @@ typedef struct s_node
 	t_rules			*rules;
 }			t_node;
 
-// Colors
+//colors
 # define RED "\033[38;2;222;56;43m"
 # define BLUE "\033[38;2;34;183;235m"
 # define CYAN "\033[0;96m"
 # define RESET "\033[0m"
+
+//status
+# define EAT 1
+# define SLEEP 2
+# define THINK 3
+# define DEATH 4
 
 //check_input.c
 int			check_args(int argc, char **argv);
@@ -89,5 +96,6 @@ size_t		ft_strlen(const char *s);
 long int	ft_atoll(const char *str);
 char		*ft_strcat(char *s1, char *s2);
 int			ft_isdigit(int c);
+void		print_status(t_node *head, int status);
 
 #endif
