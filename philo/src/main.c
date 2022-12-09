@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:18:43 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 15:59:36 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:31:07 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int	main(int argc, char *argv[])
 	init(argc, argv, head);
 	create_philos(head);
 	join_philos(head);
-	//print_nodes(head);
+	/*pthread_mutex_destroy(&head->data->mutex_eat);
+	pthread_mutex_destroy(&head->data->mutex_print);
+	pthread_mutex_destroy(&head->data->mutex_read_var);
+	pthread_mutex_destroy(&head->data->mutex_write_var);*/
+	free(head->data);
+	free(head->rules);
 	free_list(&head);
 	return (0);
 }

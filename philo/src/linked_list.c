@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 09:37:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 15:04:09 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:42:12 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	fill_new_node(int n, t_node *new)
 	new->nb_eat = 0;
 	new->satisfied = 0;
 	new->last_meal = 0;
+	pthread_mutex_init(&new->fork, NULL);
 }
 
 void	insertion_last(int n, t_node **head)

@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 18:42:35 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:23:50 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_data
 	int				died_flag;
 	pthread_mutex_t	mutex_eat;
 	pthread_mutex_t	mutex_print;
+	pthread_mutex_t	mutex_write_var;
+	pthread_mutex_t	mutex_read_var;
 }			t_data;
 
 typedef struct s_rules
@@ -46,6 +48,7 @@ typedef struct s_node
 	int				nb_eat;
 	int				satisfied;
 	long			last_meal;
+	pthread_mutex_t	fork;
 	pthread_t		philo;
 	t_data			*data;
 	t_rules			*rules;
@@ -57,11 +60,11 @@ typedef struct s_node
 # define CYAN "\033[0;96m"
 # define RESET "\033[0m"
 
-//status
+//print status
 # define EAT 1
 # define SLEEP 2
 # define THINK 3
-# define DEATH 4
+# define FORK 4
 
 //check_input.c
 int			check_args(int argc, char **argv);
@@ -87,7 +90,6 @@ long int	current_time(void);
 
 //utils_linked_list.c
 void		free_list(t_node **head);
-void		print_nodes(t_node *head);
 
 //utils.c
 int			ft_atoi(const char *str);
@@ -97,5 +99,7 @@ long int	ft_atoll(const char *str);
 char		*ft_strcat(char *s1, char *s2);
 int			ft_isdigit(int c);
 void		print_status(t_node *head, int status);
+void		write_var(int *var, int status, pthread_mutex_t *mutex);
+int			read_var(int *var, pthread_mutex_t *mutex);
 
 #endif

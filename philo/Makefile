@@ -6,7 +6,7 @@
 #    By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 18:11:37 by alida-si          #+#    #+#              #
-#    Updated: 2022/12/08 13:16:38 by alida-si         ###   ########.fr        #
+#    Updated: 2022/12/09 19:23:49 by alida-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ HEADER = -I includes
 # COMPILATION #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread #-g -fsanitize=thread
 
 # DELETE #
 

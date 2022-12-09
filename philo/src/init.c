@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:08:26 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 18:05:40 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:44:16 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	init_data(t_data *data)
 {
 	data->all_satisfied_flag = 0;
 	data->died_flag = 0;
-	data->start_time = current_time();
+	data->start_time = 0;
 	pthread_mutex_init(&data->mutex_eat, NULL);
 	pthread_mutex_init(&data->mutex_print, NULL);
+	pthread_mutex_init(&data->mutex_write_var, NULL);
+	pthread_mutex_init(&data->mutex_read_var, NULL);
 }
 
 void	init_rules(t_rules *rules, int argc, char *argv[])

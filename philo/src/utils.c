@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/08 19:00:12 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:19:15 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ char	*ft_strcat(char *s1, char *s2)
 	return (result);
 }
 
-
 void	print_status(t_node *head, int status)
 {
 	long int	time_diff;
@@ -125,6 +124,25 @@ void	print_status(t_node *head, int status)
 			printf("%ld philo %d is sleeping\n", time_diff, head->philo_id);
 		else if (status == THINK)
 			printf("%ld philo %d is thinking\n", time_diff, head->philo_id);
+		else if (status == FORK)
+			printf("%ld philo %d has taken a fork\n", time_diff, head->philo_id);
 	}
 	pthread_mutex_unlock(&head->data->mutex_print);
+}
+
+void	write_var(int *var, int status, pthread_mutex_t *mutex)
+{
+	pthread_mutex_lock(mutex);
+	*var = status;
+	pthread_mutex_unlock(mutex);
+}
+
+int	read_var(int *var, pthread_mutex_t *mutex)
+{
+	int	temp;
+
+	pthread_mutex_lock(mutex);
+	temp = *var;
+	pthread_mutex_unlock(mutex);
+	return (temp);
 }
