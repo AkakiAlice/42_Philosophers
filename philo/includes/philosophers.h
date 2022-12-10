@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 13:15:35 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:06:14 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ void		init(int argc, char *argv[], t_node *head);
 //linked_list.c
 void		create_linked_list(char *argv[], t_node **head);
 
-//monitoring.c
+//routines.c
 void		*monitoring(void *arg);
-
-//simulation.c
 void		*routine(void *arg);
+
+//actions.c
+void		*philo_think(t_node *head);
+void		*philo_sleep(t_node *head);
+void		*philo_eat(t_node **head);
 
 //threads.c
 void		join_philos(t_node *head);
