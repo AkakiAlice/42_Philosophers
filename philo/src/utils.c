@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/09 17:19:15 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:06:28 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	print_status(t_node *head, int status)
 
 	pthread_mutex_lock(&head->data->mutex_print);
 	time_diff = (current_time() - head->data->start_time) / 1000;
-	if (!head->data->all_satisfied_flag && !head->data->died_flag)
+	if (!read_var(&head->data->all_satisfied_flag, &head->data->mutex_var) && !read_var(&head->data->died_flag, &head->data->mutex_var))
 	{
 		if (status == EAT)
 			printf ("%ld philo %d is eating\n", time_diff, head->philo_id);
@@ -130,16 +130,16 @@ void	print_status(t_node *head, int status)
 	pthread_mutex_unlock(&head->data->mutex_print);
 }
 
-void	write_var(int *var, int status, pthread_mutex_t *mutex)
+void	write_var(long int *var, long int status, pthread_mutex_t *mutex)
 {
 	pthread_mutex_lock(mutex);
 	*var = status;
 	pthread_mutex_unlock(mutex);
 }
 
-int	read_var(int *var, pthread_mutex_t *mutex)
+int	read_var(long int *var, pthread_mutex_t *mutex)
 {
-	int	temp;
+	long int	temp;
 
 	pthread_mutex_lock(mutex);
 	temp = *var;

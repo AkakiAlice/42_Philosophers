@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/09 17:23:50 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:50:40 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,21 @@
 
 typedef struct s_data
 {
-	long			start_time;
+	long int		start_time;
 	pthread_t		monitoring;
-	int				all_satisfied_flag;
-	int				died_flag;
-	pthread_mutex_t	mutex_eat;
+	long int		all_satisfied_flag;
+	long int		died_flag;
 	pthread_mutex_t	mutex_print;
-	pthread_mutex_t	mutex_write_var;
-	pthread_mutex_t	mutex_read_var;
+	pthread_mutex_t	mutex_var;
 }			t_data;
 
 typedef struct s_rules
 {
-	int	nb_philos;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	must_eat;
+	int			nb_philos;
+	long int	time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	long int	must_eat;
 }			t_rules;
 
 typedef struct s_node
@@ -45,9 +43,9 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 	int				philo_id;
-	int				nb_eat;
+	long int		nb_eat;
 	int				satisfied;
-	long			last_meal;
+	long int		last_meal;
 	pthread_mutex_t	fork;
 	pthread_t		philo;
 	t_data			*data;
@@ -99,7 +97,7 @@ long int	ft_atoll(const char *str);
 char		*ft_strcat(char *s1, char *s2);
 int			ft_isdigit(int c);
 void		print_status(t_node *head, int status);
-void		write_var(int *var, int status, pthread_mutex_t *mutex);
-int			read_var(int *var, pthread_mutex_t *mutex);
+void		write_var(long int *var, long int status, pthread_mutex_t *mutex);
+int			read_var(long int *var, pthread_mutex_t *mutex);
 
 #endif
