@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 10:50:40 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:15:35 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_node
 	int				satisfied;
 	long int		last_meal;
 	pthread_mutex_t	fork;
+	pthread_mutex_t	mutex_last_meal;
+	pthread_mutex_t	mutex_nb_eat;
 	pthread_t		philo;
 	t_data			*data;
 	t_rules			*rules;
