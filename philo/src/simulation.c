@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 13:11:54 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 14:32:00 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:32:45 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,13 @@ void	hold_forks(t_node *head)
 	if (head->philo_id % 2 != 0)
 	{
 		pthread_mutex_lock(&head->fork);
-		//print_status(head, FORK);
 		pthread_mutex_lock(&head->prev->fork);
-		//print_status(head, FORK);
 	}
 	else
 	{
-		usleep(3750);
+		usleep(3550);
 		pthread_mutex_lock(&head->fork);
-		//print_status(head, FORK);
 		pthread_mutex_lock(&head->prev->fork);
-		//print_status(head, FORK);
 	}
 	print_status(head, FORK);
 	print_status(head, FORK);
