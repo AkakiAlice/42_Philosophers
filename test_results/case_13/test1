@@ -1,0 +1,21 @@
+3 philo 1 has taken a fork
+3 philo 1 has taken a fork
+3 philo 1 is eating
+9 philo 2 has taken a fork
+11 philo 3 has taken a fork
+23 philo 4 has taken a fork
+103 philo 1 is sleeping
+103 philo 2 has taken a fork
+103 philo 2 is eating
+103 philo 5 has taken a fork
+210 philo 3 has taken a fork
+210 philo 3 is eating
+210 philo 1 is thinking
+210 philo 1 has taken a fork
+210 philo 2 is sleeping
+310 philo 3 is sleeping
+310 philo 2 is thinking
+310 philo 4 has taken a fork
+310 philo 4 is eating
+314 philo 2 has taken a fork
+400 philo 1 died
