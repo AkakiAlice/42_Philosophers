@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 09:37:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 13:15:06 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:09:30 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	add_first_node(t_node **head, t_node *new)
 {
 	*head = new;
 	new->next = *head;
-	new->prev = *head;
 }
 
 void	add_node(t_node **head, t_node *new)
@@ -29,8 +28,6 @@ void	add_node(t_node **head, t_node *new)
 		aux = aux->next;
 	}
 	aux->next = new;
-	new->prev = aux;
-	(*head)->prev = new;
 	new->next = *head;
 }
 

@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:10:26 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/09 17:23:35 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:09:36 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	del_node(t_node **head)
 		temp = temp->next;
 	}
 	temp->next = (*head)->next;
-	(*head)->next->prev = temp;
 	free(*head);
 	*head = temp->next;
 }

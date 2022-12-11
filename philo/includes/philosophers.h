@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/11 14:02:38 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:09:16 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_rules
 
 typedef struct s_node
 {
-	struct s_node	*prev;
 	struct s_node	*next;
 	int				philo_id;
 	long int		nb_eat;
