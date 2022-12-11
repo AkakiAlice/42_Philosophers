@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 18:19:34 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:25:26 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_status(t_node *head, int status)
 
 	pthread_mutex_lock(&head->data->mutex_print);
 	time_diff = (current_time() - head->data->start_time) / 1000;
-	if (!read_var(&head->data->all_satisfied_flag, &head->data->mutex_satisfied_flag)
+	if (!read_var(&head->data->all_satisfied_flag, &head->data->finish_flag)
 		&& !read_var(&head->data->died_flag, &head->data->mutex_died_flag))
 	{
 		if (status == EAT)
@@ -36,7 +36,8 @@ void	print_status(t_node *head, int status)
 		else if (status == THINK)
 			printf("%ld philo %d is thinking\n", time_diff, head->philo_id);
 		else if (status == FORK)
-			printf("%ld philo %d has taken a fork\n", time_diff, head->philo_id);
+			printf("%ld philo %d has taken a fork\n",
+				time_diff, head->philo_id);
 	}
 	pthread_mutex_unlock(&head->data->mutex_print);
 }

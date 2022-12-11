@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 13:13:05 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/11 13:53:55 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:25:07 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	*monitoring(void *arg)
 		if (everyone_is_satisfied(head))
 		{
 			write_var(&aux->data->all_satisfied_flag, 1,
-				&aux->data->mutex_satisfied_flag);
+				&aux->data->finish_flag);
 			break ;
 		}
 		if (check_death(aux))
@@ -79,7 +79,7 @@ void	*routine(void *arg)
 		usleep(300);
 	while (1)
 	{
-		if (read_var(&head->data->all_satisfied_flag, &head->data->mutex_satisfied_flag)
+		if (read_var(&head->data->all_satisfied_flag, &head->data->finish_flag)
 			|| read_var(&head->data->died_flag, &head->data->mutex_died_flag))
 			break ;
 		if (!read_var(&head->data->died_flag, &head->data->mutex_died_flag))

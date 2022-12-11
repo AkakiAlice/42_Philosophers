@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:18:43 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/11 11:21:24 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:24:17 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	destroy_mutex_list(t_node *head)
 void	destroy_mutex(t_node *head)
 {
 	pthread_mutex_destroy(&head->data->mutex_print);
-	pthread_mutex_destroy(&head->data->mutex_satisfied_flag);
+	pthread_mutex_destroy(&head->data->finish_flag);
 	pthread_mutex_destroy(&head->data->mutex_died_flag);
 	destroy_mutex_list(head);
 }
