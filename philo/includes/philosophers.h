@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 18:15:41 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:02:38 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,15 @@ long int	current_time(void);
 //utils_linked_list.c
 void		free_list(t_node **head);
 
-//utils.c
+//utils_libft.c
 int			ft_atoi(const char *str);
-void		print_error_msg(char *msg);
 size_t		ft_strlen(const char *s);
 long int	ft_atoll(const char *str);
 char		*ft_strcat(char *s1, char *s2);
 int			ft_isdigit(int c);
+
+//utils.c
+void		print_error_msg(char *msg);
 void		print_status(t_node *head, int status);
 void		write_var(long int *var, long int status, pthread_mutex_t *mutex);
 int			read_var(long int *var, pthread_mutex_t *mutex);
