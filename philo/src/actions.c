@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simulation.c                                       :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 13:11:54 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 18:02:14 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:49:48 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	hold_forks(t_node *head)
 {
-	if (head->rules->nb_philos % 2 != 0)
+	if (head->philo_id != head->rules->nb_philos
+		|| head->rules->nb_philos % 2 != 0)
 	{
 		pthread_mutex_lock(&head->fork);
 		pthread_mutex_lock(&head->next->fork);
@@ -39,14 +40,13 @@ void	*philo_eat(t_node **head)
 	long	time_diff;
 
 	hold_forks(*head);
-	if (!read_var(&(*head)->data->died_flag, &(*head)->data->mutex_var))
+	if (!read_var(&(*head)->data->died_flag, &(*head)->data->mutex_died_flag))
 	{
 		time_diff = (current_time() - (*head)->data->start_time) / 1000;
 		print_status(*head, EAT);
 		write_var(&(*head)->last_meal, time_diff, &(*head)->mutex_last_meal);
 		write_var(&(*head)->nb_eat, (*head)->nb_eat + 1,
 			&(*head)->mutex_nb_eat);
-		pthread_mutex_unlock(&(*head)->mutex_nb_eat);
 		usleep((*head)->rules->time_to_eat * 1000);
 	}
 	drop_forks(*head);

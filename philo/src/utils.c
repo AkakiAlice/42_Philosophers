@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:39:13 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 16:58:54 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:19:34 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	print_status(t_node *head, int status)
 
 	pthread_mutex_lock(&head->data->mutex_print);
 	time_diff = (current_time() - head->data->start_time) / 1000;
-	if (!read_var(&head->data->all_satisfied_flag, &head->data->mutex_var)
-		&& !read_var(&head->data->died_flag, &head->data->mutex_var))
+	if (!read_var(&head->data->all_satisfied_flag, &head->data->mutex_satisfied_flag)
+		&& !read_var(&head->data->died_flag, &head->data->mutex_died_flag))
 	{
 		if (status == EAT)
 			printf ("%ld philo %d is eating\n", time_diff, head->philo_id);

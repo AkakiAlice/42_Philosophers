@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:39:24 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 18:06:14 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:15:41 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct s_data
 	long int		all_satisfied_flag;
 	long int		died_flag;
 	pthread_mutex_t	mutex_print;
-	pthread_mutex_t	mutex_var;
+	pthread_mutex_t	mutex_satisfied_flag;
+	pthread_mutex_t	mutex_died_flag;
 }			t_data;
 
 typedef struct s_rules
