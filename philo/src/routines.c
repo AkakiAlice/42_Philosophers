@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 13:13:05 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/11 14:25:07 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:37:00 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	check_death(t_node *node)
 	if ((time_diff - read_var(&node->last_meal, &node->mutex_last_meal))
 		>= node->rules->time_to_die)
 	{
-		write_var(&node->data->died_flag, 1, &node->data->mutex_died_flag);
+		pthread_mutex_lock(&node->data->mutex_died_flag);
+		node->data->died_flag = 1;
 		printf("%d philo %d died\n", time_diff, node->philo_id);
+		pthread_mutex_unlock(&node->data->mutex_died_flag);
 		return (1);
 	}
 	return (0);
@@ -52,6 +54,7 @@ void	*monitoring(void *arg)
 	aux = head;
 	while (1)
 	{
+		usleep(100);
 		if (read_var(&aux->nb_eat, &aux->mutex_nb_eat) == aux->rules->must_eat
 			&& aux->rules->must_eat != 0)
 		{
