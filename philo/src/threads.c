@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 13:08:33 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/10 10:01:17 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:29:32 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*routine_one_philo(void *arg)
 {
-	t_node	*head;
+	t_node *head;
 
 	head = (t_node *)arg;
 	print_status(head, FORK);
@@ -39,7 +39,7 @@ void	create_philos(t_node *head)
 		pthread_create(&aux->philo, NULL, &routine, (void *)aux);
 		aux = aux->next;
 	}
-	pthread_create(&aux->data->monitoring, NULL, &monitoring, (void *)aux);
+	//pthread_create(&aux->data->monitoring, NULL, &monitoring, (void *)aux);
 }
 
 void	join_philos(t_node *head)

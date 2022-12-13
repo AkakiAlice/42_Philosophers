@@ -6,7 +6,7 @@
 /*   By: alida-si <alida-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:18:43 by alida-si          #+#    #+#             */
-/*   Updated: 2022/12/11 14:24:17 by alida-si         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:28:55 by alida-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char *argv[])
 	create_linked_list(argv, &head);
 	init(argc, argv, head);
 	create_philos(head);
+	monitoring((void *)head);
 	join_philos(head);
 	destroy_mutex(head);
 	free(head->data);
